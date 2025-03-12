@@ -15,7 +15,7 @@ O **Sky-Media-Home** é um projeto da disciplina de Projeto Integrador de Arquit
 
 O **Sky-Media-Home** tem como principal objetivo desenvolver e implementar um servidor Cloud baseado em **Ubuntu Server**, utilizando tecnologias de virtualização (**VPS**) e gerenciamento remoto via **SSH**. O projeto visa oferecer uma plataforma segura e eficiente para armazenar, organizar e acessar conteúdos multimídia, incluindo vídeos, imagens e documentos.
 
-## Tecnologias Utilizadas
+## Tecnologias a serem utilizadas
 
 - **Ubuntu Server**: Sistema operacional robusto e confiável para servidores.
 - **Virtualização (VPS)**: Tecnologia que permite a criação de ambientes virtuais isolados, garantindo escalabilidade e flexibilidade.
