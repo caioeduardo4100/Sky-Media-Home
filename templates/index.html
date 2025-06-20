@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reprodutor de Vídeo Minimalista</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Reprodutor de Vídeo</h1>
+        </header>
+        <main>
+            <div class="player-wrapper">
+                <video id="video-player" controls autoplay>
+                    Seu navegador não suporta a tag de vídeo.
+                </video>
+            </div>
+            <nav class="playlist">
+                <h2>Playlist</h2>
+                <ul id="playlist-ul">
+                    {% for video in videos %}
+                        <li><a href="#" class="video-link" data-video-src="{{ url_for('serve_video', filename=video) }}">{{ video | replace('_', ' ') | replace('.mp4', '') }}</a></li>
+                    {% else %}
+                        <li>Nenhum vídeo encontrado. Certifique-se de que a pasta de vídeos foi montada corretamente ao executar o container Docker.</li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const videoPlayer = document.getElementById('video-player');
+            const playlistLinks = document.querySelectorAll('.video-link');
+            const playlistItems = document.querySelectorAll('.playlist li');
+
+            function setActiveLink(activeLink) {
+                playlistItems.forEach(item => item.classList.remove('active'));
+                if (activeLink) {
+                    activeLink.parentElement.classList.add('active');
+                }
+            }
+
+            playlistLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const videoSrc = this.getAttribute('data-video-src');
+                    videoPlayer.src = videoSrc;
+                    videoPlayer.play();
+                    document.title = this.textContent; // Atualiza o título da página
+                    setActiveLink(this);
+                });
+            });
+
+            // Carrega e reproduz o primeiro vídeo da lista por padrão
+            if (playlistLinks.length > 0) {
+                const firstLink = playlistLinks[0];
+                videoPlayer.src = firstLink.getAttribute('data-video-src');
+                document.title = firstLink.textContent;
+                videoPlayer.play();
+                setActiveLink(firstLink);
+            }
+
+            // Ao final de um vídeo, toca o próximo da lista
+            videoPlayer.addEventListener('ended', () => {
+                const currentActive = document.querySelector('.playlist li.active a');
+                let nextLink = null;
+                for (let i = 0; i < playlistLinks.length; i++) {
+                    if (playlistLinks[i] === currentActive) {
+                        if (i < playlistLinks.length - 1) {
+                            nextLink = playlistLinks[i + 1];
+                        }
+                        break;
+                    }
+                }
+                if (nextLink) {
+                    nextLink.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  # O primeiro serviço é o nosso reprodutor de vídeo
+  web:
+    build: . # Constrói a imagem usando o Dockerfile na pasta atual (raiz do projeto)
+    container_name: video_player_web
+    restart: unless-stopped
+    volumes:
+      # IMPORTANTE: Altere o caminho abaixo para o da sua pasta de vídeos!
+      - "/Change/Your/Folder/Here:/media/videos:ro"
+
+  # O segundo serviço é o nosso contêiner do Tor
+  tor:
+    build: ./tor # Constrói a imagem usando o Dockerfile na pasta ./tor
+    container_name: video_player_tor
+    restart: unless-stopped
+    depends_on:
+      - web # Garante que o contêiner 'web' seja iniciado antes do 'tor'
+    volumes:
+      # Este volume salva os dados do serviço oculto (chaves e hostname)
+      # na pasta 'tor_data' no seu computador. Isso garante que seu endereço .onion seja permanente.
+      - tor_data:/var/lib/tor/hidden_service/
+
+volumes:
+  tor_data:

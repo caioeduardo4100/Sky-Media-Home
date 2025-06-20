@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
+:root {
+    --bg-color: #121212;
+    --primary-text-color: #e0e0e0;
+    --secondary-text-color: #b3b3b3;
+    --surface-color: #1e1e1e;
+    --surface-hover-color: #282828;
+    --divider-color: #333;
+    --accent-color: #bb86fc;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--primary-text-color);
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: clamp(1rem, 5vw, 3rem);
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+}
+
+header h1 {
+    font-weight: 300;
+    font-size: 2rem;
+    border-bottom: 1px solid var(--divider-color);
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 900px) {
+    main {
+        grid-template-columns: 3fr 1fr;
+    }
+}
+
+.player-wrapper {
+    background-color: #000;
+    border-radius: 8px;
+    overflow: hidden;
+    min-height: 300px;
+}
+
+video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.playlist h2 {
+    font-weight: 400;
+    font-size: 1.5rem;
+    padding-bottom: 0.5rem;
+    margin-top: 0;
+}
+
+.playlist ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.playlist li a {
+    display: block;
+    padding: 12px 15px;
+    text-decoration: none;
+    color: var(--secondary-text-color);
+    background-color: var(--surface-color);
+    margin-bottom: 8px;
+    border-radius: 5px;
+    border-left: 4px solid transparent;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.playlist li a:hover {
+    background-color: var(--surface-hover-color);
+    color: var(--primary-text-color);
+}
+
+.playlist li.active a {
+    color: var(--primary-text-color);
+    font-weight: bold;
+    border-left: 4px solid var(--accent-color);
+    background-color: var(--surface-hover-color);
+}

@@ -1,0 +1,5 @@
+# Habilita o log para o stdout, para que possamos ver os logs com 'docker logs'
+Log notice stdout
+
+HiddenServiceDir /var/lib/tor/hidden_service/
+HiddenServicePort 80 web:5000
