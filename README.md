@@ -1,24 +1,31 @@
 # Sky-Media-Home
 
-O **Sky-Media-Home** é um projeto da disciplina de Projeto Integrador de Arquiteturas Cloud que tem como o objetivo de criar uma solução de armazenamento e organização de conteúdos multimídia em um ambiente Cloud seguro e escalável.
+![Docker](https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white)
+![Tor](https://img.shields.io/badge/Tor-7D4698?style=for-the-badge&logo=Tor-Browser&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
 
-## Integrantes da equipe
+Projeto integrador de Arquiteturas Cloud de streaming privado que utilizada a rede Tor com armazenamento em nuvem.
+
+## 🧑‍💻 Equipe
 
 - **Antônio Davi**
 - **Caio Mizohata**
 - **Felipe Martins**
 - **Guilherme de Barros**
 - **Miguel Cirico**
-- **Otávio Falcão**
+- **Otávio Falcão**   
 
-## Objetivos do Projeto
+## 🎯 Objetivos
 
-O **Sky-Media-Home** tem como principal objetivo desenvolver e implementar um servidor Cloud baseado em **Ubuntu Server**, utilizando tecnologias de virtualização (**VPS**) e gerenciamento remoto via **SSH**. O projeto visa oferecer uma plataforma segura e eficiente para armazenar, organizar e acessar conteúdos multimídia, incluindo vídeos, imagens e documentos.
+- ✅ Servidor de vídeos pessoal via Tor
+- ✅ Interface web moderna com player
+- ✅ Infraestrutura containerizada
+- ✅ Solução 100% privada
 
-## Tecnologias a serem utilizadas
+## 🛠️ Tecnologias
 
-- **Ubuntu Server**: Sistema operacional robusto e confiável para servidores.
-- **Virtualização (VPS)**: Tecnologia que permite a criação de ambientes virtuais isolados, garantindo escalabilidade e flexibilidade.
-- **SSH (Secure Shell)**: Protocolo de rede que permite o gerenciamento remoto seguro do servidor.
-- **Armazenamento em Nuvem**: Solução escalável para armazenamento de grandes volumes de dados multimídia.
-
+- **Docker** + **Compose**
+- **Tor Network** (.onion)
+- **Flask** (Python)
+- **HTML5** + **CSS**
+- **Javascript Vanilla**
